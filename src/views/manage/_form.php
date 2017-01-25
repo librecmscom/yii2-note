@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yuncms\note\models\Note;
 
 /* @var $this yii\web\View */
 /* @var $model yuncms\note\models\Note */
@@ -14,7 +15,23 @@ use yii\bootstrap\ActiveForm;
 
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('note', 'Create') : Yii::t('note', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php if ($model->isNewRecord): ?>
+            <?= Html::submitButton(Yii::t('note', 'Save as public'), [
+                'class' => 'btn btn-success',
+                'name' => 'Note[type]',
+                'value' => Note::TYPE_PUBLIC
+            ]) ?>
+
+            <?= Html::submitButton(Yii::t('note', 'Save as private'), [
+                'class' => 'btn pub-btn',
+                'name' => 'Note[type]',
+                'value' => Note::TYPE_PRIVATE
+            ]) ?>
+        <?php else: ?>
+            <?=
+            Html::submitButton(Yii::t('note', 'Update'), ['class' => 'btn btn-primary'])
+            ?>
+        <?php endif; ?>
     </div>
 
 <?php ActiveForm::end(); ?>

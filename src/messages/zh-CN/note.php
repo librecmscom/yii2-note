@@ -17,9 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Create' => '',
+    'Save as private' => '保存为私密',
+    'Save as public' => '保存为公开',
     'key' => '',
-    'Are you sure you want to private this note?' => '你确实要讲该笔记设置为私有么？',
+    'Are you sure you want to private this note?' => '你确实要讲该笔记设置为私密么？',
     'Are you sure you want to public this note?' => '你确实要公开该笔记么？',
     'Content' => '内容',
     'Create Note' => '创建笔记',
@@ -31,10 +32,10 @@ return [
     'Note has been deleted' => '笔记已经删除',
     'Note updated.' => '笔记更新成功',
     'Notes' => '笔记',
-    'Notes have been made private.' => '笔记已经私有。',
+    'Notes have been made private.' => '笔记已经私密。',
     'Notes have been made public.' => '笔记已经公开。',
     'Operation' => '操作',
-    'Private' => '私有',
+    'Private' => '私密',
     'Public' => '公开',
     'Title' => '标题',
     'Type' => '类型',
