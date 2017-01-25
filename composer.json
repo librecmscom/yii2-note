@@ -11,7 +11,7 @@
   "require": {
     "yiisoft/yii2": "~2.0.0",
     "yuncms/yii2-user": "*",
-    "endroid/qrcode":"~1.0"
+    "xutl/yii2-highlightjs-asset":"*"
   },
   "autoload": {
     "psr-4": {
