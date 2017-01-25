@@ -1,0 +1,21 @@
+{
+  "name": "yuncms/yii2-note",
+  "description": "The Yii Note module",
+  "keywords": [
+    "yii",
+    "yii2-note",
+    "note"
+  ],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "require": {
+    "yiisoft/yii2": "~2.0.0",
+    "yuncms/yii2-user": "*",
+    "endroid/qrcode":"~1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "yuncms\\note\\": "src"
+    }
+  }
+}
