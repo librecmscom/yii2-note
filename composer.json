@@ -10,8 +10,9 @@
   "license": "MIT",
   "require": {
     "yiisoft/yii2": "~2.0.0",
-    "yuncms/yii2-user": "*",
-    "xutl/yii2-highlightjs-asset":"*"
+    "xutl/yii2-highlightjs-widget": "~2.0.0",
+    "xutl/yii2-select2-widget": "~1.0.0",
+    "yuncms/yii2-user": "*"
   },
   "autoload": {
     "psr-4": {

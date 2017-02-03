@@ -19,6 +19,7 @@
 return [
     'Save as private' => '保存为私密',
     'Save as public' => '保存为公开',
+    'Please choose' => '请选择',
     'key' => '',
     'Are you sure you want to private this note?' => '你确实要讲该笔记设置为私密么？',
     'Are you sure you want to public this note?' => '你确实要公开该笔记么？',
