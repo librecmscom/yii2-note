@@ -17,9 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Save as private' => '保存为私密',
-    'Save as public' => '保存为公开',
-    'Please choose' => '请选择',
+    'Learned something new？ Write it down' => '今天学到了什么呢？ 快用笔记记录一下吧',
+    'Write a note' => '记笔记',
     'key' => '',
     'Are you sure you want to private this note?' => '你确实要讲该笔记设置为私密么？',
     'Are you sure you want to public this note?' => '你确实要公开该笔记么？',
@@ -36,8 +35,11 @@ return [
     'Notes have been made private.' => '笔记已经私密。',
     'Notes have been made public.' => '笔记已经公开。',
     'Operation' => '操作',
+    'Please choose' => '请选择',
     'Private' => '私密',
     'Public' => '公开',
+    'Save as private' => '保存为私密',
+    'Save as public' => '保存为公开',
     'Title' => '标题',
     'Type' => '类型',
     'Update' => '更新',
