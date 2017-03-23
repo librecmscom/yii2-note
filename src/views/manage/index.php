@@ -5,6 +5,7 @@ use yii\grid\GridView;
 
 /*
  * @var yii\web\View $this
+ * @var yuncms\note\models\Note $model
  */
 
 $this->title = Yii::t('note', 'Notes');
@@ -30,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'header' => Yii::t('note', 'Title'),
                             'value' => function ($model) {
-                                return Html::a($model->title, ['/note/note/view', 'key' => $model->key], ['target' => '_blank']);
+                                return Html::a($model->title, ['/note/note/view', 'uuid' => $model->uuid], ['target' => '_blank']);
                             },
                             'format' => 'raw',
                         ],

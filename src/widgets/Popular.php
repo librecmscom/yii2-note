@@ -25,7 +25,7 @@ class Popular extends Widget
      */
     public function run()
     {
-        $models = Note::find()
+        $models = Note::find()->andWhere(['type' => Note::TYPE_PUBLIC])
             ->views($this->views)
             ->limit($this->limit)
             ->all();

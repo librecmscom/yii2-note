@@ -7,6 +7,7 @@ use yii\helpers\Html;
 
 ?>
 
+
 <div class="panel panel-default">
     <div class="panel-heading"><?= Yii::t('note', 'Popular Notes') ?></div>
     <ul class="note-notes-list list-group">

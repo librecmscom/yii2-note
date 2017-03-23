@@ -110,6 +110,10 @@ class Note extends ActiveRecord
         return null;
     }
 
+    /**
+     * 是否是公开笔记
+     * @return bool
+     */
     public function isPublic()
     {
         return $this->type == static::TYPE_PUBLIC;

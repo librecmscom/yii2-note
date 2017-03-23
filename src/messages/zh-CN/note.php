@@ -17,9 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Learned something new？ Write it down' => '今天学到了什么呢？ 快用笔记记录一下吧',
-    'Write a note' => '记笔记',
-    'key' => '',
+    'No popular notes' => '暂无热门笔记',
+    'Popular Notes' => '热门笔记',
+    'UUID' => '',
     'Are you sure you want to private this note?' => '你确实要讲该笔记设置为私密么？',
     'Are you sure you want to public this note?' => '你确实要公开该笔记么？',
     'Content' => '内容',
@@ -27,6 +27,7 @@ return [
     'Created At' => '创建时间',
     'Expired At' => '过期时间',
     'Format' => '语法格式',
+    'Learned something new？ Write it down' => '今天学到了什么呢？ 快用笔记记录一下吧',
     'Note created.' => '笔记已经创建',
     'Note does not exist.' => '笔记不存在',
     'Note has been deleted' => '笔记已经删除',
@@ -46,4 +47,5 @@ return [
     'Update Note: ' => '更新笔记：',
     'Updated At' => '更新时间',
     'Views' => '查看数',
+    'Write a note' => '记笔记',
 ];
