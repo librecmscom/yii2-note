@@ -13,10 +13,10 @@ $this->title = Yii::t('note', 'Notes');
 ?>
 <div class="row">
     <div class="col-xs-12 col-md-9 main">
-        <h1>
+        <h4>
             <i class="glyphicon glyphicon-tags"></i> <?= Html::encode($this->title) ?><br>
 <!--            <small>标签不仅能组织和归类你的内容，还能关联相似的内容。正确的使用标签可让你更容易的找到需要的源代码。</small>-->
-        </h1>
+        </h4>
         <?= ListView::widget([
             'options' => [
                 'class' => 'row list-note'
