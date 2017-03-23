@@ -14,7 +14,7 @@ use yii\db\ActiveRecord;
  * @property integer $id
  * @property integer $user_id
  * @property integer $folder_id
- * @property string $key
+ * @property string $uuid
  * @property boolean $type
  * @property string $title
  * @property string $format
@@ -87,7 +87,7 @@ class Note extends ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'title' => Yii::t('note', 'Title'),
-            'key' => Yii::t('note', 'key'),
+            'uuid' => Yii::t('note', 'UUID'),
             'type' => Yii::t('note', 'Type'),
             'format' => Yii::t('note', 'Format'),
             'views' => Yii::t('note', 'Views'),
@@ -162,7 +162,7 @@ class Note extends ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         if ($insert) {
-            $this->updateAttributes(['key' => $this->generateKey()]);
+            $this->updateAttributes(['uuid' => $this->generateKey()]);
         }
         return parent::afterSave($insert, $changedAttributes);
     }

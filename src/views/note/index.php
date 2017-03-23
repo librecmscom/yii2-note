@@ -1,9 +1,9 @@
 <?php
 use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\grid\GridView;
 use yii\widgets\ListView;
-
+use yuncms\note\models\Note;
+use yuncms\note\widgets\Popular;
 /*
  * @var yii\web\View $this
  */
@@ -40,6 +40,8 @@ $this->title = Yii::t('note', 'Notes');
             <a class="btn btn-primary btn-block mt-10" href="<?=Url::to(['/note/manage/create'])?>"><i class="fa fa-edit"></i> <?=Yii::t('note','Write a note');?></a>
         </div>
 
+
+        <?=Popular::widget()?>
 
     </div>
 </div>

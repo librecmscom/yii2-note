@@ -62,13 +62,13 @@ class NoteController extends Controller
     /**
      * 查看笔记页面
      *
-     * @param string $key
+     * @param string $uuid
      *
      * @return string
      */
-    public function actionView($key)
+    public function actionView($uuid)
     {
-        $model = $this->findModel($key);
+        $model = $this->findModel($uuid);
         if ($model && ($model->isPublic() || $model->isAuthor())) {
             return $this->render('view', [
                 'model' => $model,
@@ -90,7 +90,7 @@ class NoteController extends Controller
      */
     protected function findModel($key)
     {
-        if (($model = Note::findOne(['key' => $key])) != null) {
+        if (($model = Note::findOne(['uuid' => $key])) != null) {
             return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist');
