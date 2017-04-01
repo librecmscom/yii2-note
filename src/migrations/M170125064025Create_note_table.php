@@ -31,7 +31,7 @@ class M170125064025Create_note_table extends Migration
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->createIndex('note_key', '{{%note}}', 'key', true);
+        $this->createIndex('note_key', '{{%note}}', 'uuid', true);
     }
 
     public function down()
