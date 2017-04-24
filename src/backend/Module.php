@@ -15,7 +15,7 @@ use yii\base\InvalidParamException;
  *
  * ```php
  * 'modules' => [
- *     'payment' => [
+ *     'note' => [
  *         'class'         => 'yuncms\note\backend\Module',
  *     ],
  * ],
