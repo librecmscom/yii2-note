@@ -68,9 +68,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'ip',
                     'size',
                     'views',
-                    'expired_at',
-                    'created_at',
-                    'updated_at',
+                    'expired_at:datetime',
+                    'created_at:datetime',
+                    'updated_at:datetime',
                 ],
             ]) ?>
             <?php Box::end(); ?>

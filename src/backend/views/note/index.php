@@ -7,6 +7,7 @@ use xutl\inspinia\Toolbar;
 use xutl\inspinia\Alert;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel yuncms\note\backend\models\NoteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -14,7 +15,7 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('note', 'Manage Note');
 $this->params['breadcrumbs'][] = $this->title;
 $this->registerJs("jQuery(\"#batch_deletion\").on(\"click\", function () {
-    yii.confirm('" . Yii::t('app', 'Are you sure you want to delete this item?')."',function(){
+    yii.confirm('" . Yii::t('app', 'Are you sure you want to delete this item?') . "',function(){
         var ids = jQuery('#gridview').yiiGridView(\"getSelectedRows\");
         jQuery.post(\"/note/batch-delete\",{ids:ids});
     });
@@ -24,7 +25,7 @@ $this->registerJs("jQuery(\"#batch_deletion\").on(\"click\", function () {
     <div class="row">
         <div class="col-lg-12 note-index">
             <?= Alert::widget() ?>
-            <?php Pjax::begin(); ?>                
+            <?php Pjax::begin(); ?>
             <?php Box::begin([
                 //'noPadding' => true,
                 'header' => Html::encode($this->title),
@@ -41,7 +42,7 @@ $this->registerJs("jQuery(\"#batch_deletion\").on(\"click\", function () {
                             'url' => ['create'],
                         ],
                         [
-                            'options' => ['id' => 'batch_deletion', 'class'=>'btn btn-sm btn-danger'],
+                            'options' => ['id' => 'batch_deletion', 'class' => 'btn btn-sm btn-danger'],
                             'label' => Yii::t('note', 'Batch Deletion'),
                             'url' => 'javascript:void(0);',
                         ]
@@ -65,17 +66,18 @@ $this->registerJs("jQuery(\"#batch_deletion\").on(\"click\", function () {
                     //['class' => 'yii\grid\SerialColumn'],
                     'id',
                     'user_id',
+                    'title',
                     'folder_id',
                     'uuid',
                     'type',
-                    // 'title',
+
                     // 'format',
                     // 'content:ntext',
                     // 'ip',
                     // 'size',
                     // 'views',
                     // 'expired_at',
-                    // 'created_at',
+                     'created_at:datetime',
                     // 'updated_at',
                     [
                         'class' => 'yii\grid\ActionColumn',
