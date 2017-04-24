@@ -4,6 +4,7 @@
  * @copyright Copyright (c) 2012 TintSoft Technology Co. Ltd.
  * @license http://www.tintsoft.com/license/
  */
+
 namespace yuncms\note\widgets;
 
 use yii\base\Widget;
@@ -17,7 +18,14 @@ use yuncms\note\models\Note;
  */
 class Popular extends Widget
 {
+    /**
+     * @var int 获取数量
+     */
     public $limit = 10;
+
+    /**
+     * @var int 最少显示次数
+     */
     public $views = 10;
 
     /**
@@ -27,7 +35,7 @@ class Popular extends Widget
     {
         $models = Note::find()->andWhere(['type' => Note::TYPE_PUBLIC])
             ->views($this->views)
-            ->limit($this->limit)
+            ->limit($this->limit)->orderBy(['(views / pow((((UNIX_TIMESTAMP(NOW()) - created_at) / 3600) + 2),1.8) )' => SORT_DESC])
             ->all();
 
         return $this->render('popular', [
