@@ -188,7 +188,7 @@ use yuncms\note\models\Note;
 ]) ?>
 <?= $form->field($model, 'content')->textarea() ?>
 
-
+<?= \xutl\plupload\Plupload::widget(['url'=>'/attachment/upload/pl-upload','autoUpload'=>true]) ?>
     <div class="form-group">
         <?php if ($model->isNewRecord): ?>
             <?= Html::submitButton(Yii::t('note', 'Save as public'), [
