@@ -4,6 +4,7 @@
  * @copyright Copyright (c) 2012 TintSoft Technology Co. Ltd.
  * @license http://www.tintsoft.com/license/
  */
+
 namespace yuncms\note\controllers;
 
 use Yii;
@@ -15,6 +16,7 @@ use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\web\ForbiddenHttpException;
+use yii\web\Response;
 use yuncms\note\models\Note;
 
 /**
@@ -38,7 +40,7 @@ class NoteController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view'],
+                        'actions' => ['index', 'view', 'print', 'raw'],
                         'roles' => ['?', '@'],
                     ]
                 ],
@@ -76,6 +78,41 @@ class NoteController extends Controller
         } else {
             Yii::$app->session->setFlash('success', Yii::t('note', 'Note does not exist.'));
             return $this->redirect(['index',]);
+        }
+    }
+
+    /**
+     * 获取打印
+     * @param string $uuid
+     * @return string|Response
+     */
+    public function actionPrint($uuid)
+    {
+        $model = $this->findModel($uuid);
+        if ($model && ($model->isPublic() || $model->isAuthor())) {
+            return $this->render('print', [
+                'model' => $model,
+            ]);
+        } else {
+            Yii::$app->session->setFlash('success', Yii::t('note', 'Note does not exist.'));
+            return $this->redirect(['index']);
+        }
+    }
+
+    /**
+     * 获取原始笔记
+     * @param string $uuid
+     * @return string|Response
+     */
+    public function actionRaw($uuid)
+    {
+        $model = $this->findModel($uuid);
+        if ($model && ($model->isPublic() || $model->isAuthor())) {
+            Yii::$app->response->format = Response::FORMAT_RAW;
+            return $model->content;
+        } else {
+            Yii::$app->session->setFlash('success', Yii::t('note', 'Note does not exist.'));
+            return $this->redirect(['index']);
         }
     }
 
