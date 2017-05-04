@@ -125,8 +125,7 @@ class NoteController extends Controller
     {
         $model = $this->findModel($uuid);
         if ($model && ($model->isPublic() || $model->isAuthor())) {
-            Yii::$app->response->sendContentAsFile($model->content, $model->title);
-            //return $model->content;
+            return Yii::$app->response->sendContentAsFile($model->content, $model->title);
         } else {
             Yii::$app->session->setFlash('success', Yii::t('note', 'Note does not exist.'));
             return $this->redirect(['index']);
