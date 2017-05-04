@@ -1,4 +1,7 @@
 # yii2-note
+
+仿 https://pastebin.com/ 的笔记
+
 笔记
 
 
