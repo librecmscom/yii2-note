@@ -40,7 +40,7 @@ class NoteController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'print', 'raw'],
+                        'actions' => ['index', 'view', 'print', 'raw','download'],
                         'roles' => ['?', '@'],
                     ]
                 ],
@@ -110,6 +110,23 @@ class NoteController extends Controller
         if ($model && ($model->isPublic() || $model->isAuthor())) {
             Yii::$app->response->format = Response::FORMAT_RAW;
             return $model->content;
+        } else {
+            Yii::$app->session->setFlash('success', Yii::t('note', 'Note does not exist.'));
+            return $this->redirect(['index']);
+        }
+    }
+
+    /**
+     * 下载原始笔记
+     * @param string $uuid
+     * @return string|Response
+     */
+    public function actionDownload($uuid)
+    {
+        $model = $this->findModel($uuid);
+        if ($model && ($model->isPublic() || $model->isAuthor())) {
+            Yii::$app->response->sendContentAsFile($model->content, $model->title);
+            //return $model->content;
         } else {
             Yii::$app->session->setFlash('success', Yii::t('note', 'Note does not exist.'));
             return $this->redirect(['index']);
