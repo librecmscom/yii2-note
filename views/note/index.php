@@ -4,30 +4,32 @@ use yii\helpers\Html;
 use yii\widgets\ListView;
 use yuncms\note\models\Note;
 use yuncms\note\widgets\Popular;
+use yuncms\note\assets\NoteAsset;
 /*
  * @var yii\web\View $this
  */
 
 $this->title = Yii::t('note', 'Notes');
 //$this->params['breadcrumbs'][] = $this->title;
+NoteAsset::register($this);
 ?>
 <div class="row">
     <div class="col-xs-12 col-md-9 main">
-        <h4>
+        <h4 class="page-title">
             <i class="glyphicon glyphicon-tags"></i> <?= Html::encode($this->title) ?><br>
-<!--            <small>标签不仅能组织和归类你的内容，还能关联相似的内容。正确的使用标签可让你更容易的找到需要的源代码。</small>-->
         </h4>
         <?= ListView::widget([
             'options' => [
-                'class' => 'row list-note'
+                'class' => 'note-stream'
             ],
             'layout' => '{items} <div class="text-center">{pager}</div>',
             'pager' => [
                 'maxButtonCount' => 10,
-                'nextPageLabel' => Yii::t('app', 'Next page'),
-                'prevPageLabel' => Yii::t('app', 'Previous page'),
+                'nextPageLabel' => Yii::t('note', 'Next page'),
+                'prevPageLabel' => Yii::t('note', 'Previous page'),
             ],
             'dataProvider' => $dataProvider,
+            'itemOptions' => ['tag' => 'section', 'class' => 'note-list-item clearfix'],
             'itemView' => '_item'
         ]);
         ?>
@@ -36,12 +38,10 @@ $this->title = Yii::t('note', 'Notes');
 
     <div class="col-xs-12 col-md-3 side">
         <div class="side-alert alert alert-warning mt-30">
-            <p><?=Yii::t('note','Learned something new？ Write it down');?></p>
-            <a class="btn btn-primary btn-block mt-10" href="<?=Url::to(['/note/manage/create'])?>"><i class="fa fa-edit"></i> <?=Yii::t('note','Write a note');?></a>
+            <p><?= Yii::t('note', 'Learned something new？ Write it down'); ?></p>
+            <a class="btn btn-primary btn-block mt-10" href="<?= Url::to(['/note/manage/create']) ?>"><i
+                        class="fa fa-edit"></i> <?= Yii::t('note', 'Write a note'); ?></a>
         </div>
-
-
-        <?=Popular::widget()?>
-
+        <?= Popular::widget() ?>
     </div>
 </div>

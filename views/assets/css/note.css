@@ -1,0 +1,15 @@
+/*列表样式*/
+.note-stream{margin-bottom:10px}
+.note-list.top-indent{margin-top:-10px}
+.note-list-item{margin:0;border-bottom:1px solid #eee;padding:10px 0}
+.note-list-item .author{margin-bottom:5px;color:#999;font-size:13px}
+.note-list-item .author small{color:#ddd}
+.note-list-item .author a{color:#999;}
+.note-list-item .title{display:inline;margin:0 5px 0 0;font-size:16px}
+.note-list-item .title a{color:#333}
+.note-list-item .title a:hover{color:#017e66}
+.note-list-item .title a:visited{font-weight:400}
+.note-list-item .split:before{content:"·";color:#ddd;}
+.note-list-item .summary{overflow:auto;overflow-x:hidden}
+.note-list-item .excerpt{margin:5px 0 0;height:42px;color:#777;font-size:13px;line-height:1.6;overflow:hidden}
+.note-list-item .highlight{background:#FFF9EB}
