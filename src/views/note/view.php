@@ -15,12 +15,14 @@ $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
         </h1>
         <?= Html::encode($model->title); ?>
 
+        <div class="fmt">
+            <?php HighlightJs::begin([
+                'format' => $model->format
+            ]); ?>
+            <?= Html::encode($model->content); ?>
+            <?php HighlightJs::end() ?>
 
-        <?php HighlightJs::begin([
-            'format' => $model->format
-        ]); ?>
-        <?= Html::encode($model->content); ?>
-        <?php HighlightJs::end() ?>
+        </div>
     </div>
 
 
