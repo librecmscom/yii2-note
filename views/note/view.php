@@ -3,6 +3,9 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use xutl\highlightjs\HighlightJs;
+use yuncms\note\assets\NoteAsset;
+
+NoteAsset::register($this);
 
 $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
 ?>
