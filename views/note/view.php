@@ -12,8 +12,6 @@ $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
         <h4 class="page-title">
             <i class="glyphicon glyphicon-tags"></i> <?= Html::encode($model->title); ?>
         </h4>
-
-
         <div class="fmt">
             <?php HighlightJs::begin([
                 'format' => $model->format
