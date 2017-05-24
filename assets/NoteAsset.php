@@ -27,5 +27,6 @@ class NoteAsset extends AssetBundle
      */
     public $depends = [
         'yii\bootstrap\BootstrapAsset',
+        'xutl\fmt\Asset'
     ];
 }
