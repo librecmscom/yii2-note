@@ -43,7 +43,7 @@ class NoteSearch extends Note
     {
         $query = Note::find();
 
-        // add conditions that should always apply here
+        $query->orderBy(['id' => SORT_DESC]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
