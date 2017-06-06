@@ -16,12 +16,10 @@ $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
             <i class="glyphicon glyphicon-tags"></i> <?= Html::encode($model->title); ?>
         </h4>
         <div class="fmt">
-            <?php HighlightJs::begin([
-                'format' => $model->format
+            <?=HighlightJs::widget([
+                'format' => $model->format,
+                'content' => $model->content,
             ]); ?>
-            <?= Html::encode($model->content); ?>
-            <?php HighlightJs::end() ?>
-
         </div>
     </div>
 
