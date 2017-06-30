@@ -12,6 +12,6 @@ use yii\helpers\Url;
            href="<?= Url::to(['/note/note/view', 'uuid' => $model->uuid]); ?>"><?= Html::encode($model->title) ?></a>
     </div>
     <div class="col-md-2">
-        <span class="profile-mine__content--date"><?= date('Y-m-d H:i', $model->created_at); ?></span>
+        <span class="profile-mine__content--date"><?= date('Y-m-d H:i:s', $model->created_at); ?></span>
     </div>
 </div>
