@@ -15,7 +15,7 @@ if (!Yii::$app->user->isGuest && Yii::$app->user->id == $user->id) {//Me
 } else {
     $who = Yii::t('user', 'His');
 }
-$this->title = Yii::t('user', '{who} Stream', [
+$this->title = Yii::t('note', '{who} Notes', [
     'who' => $who,
 ]);
 ?>

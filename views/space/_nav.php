@@ -7,8 +7,8 @@ use yii\bootstrap\Nav;
     'items' => [
 
         //我的笔记
-        ['label' => Yii::t('article', 'My Notes'), 'url' => ['/note/space/started', 'id' => $user->id]],
+        ['label' => Yii::t('note', 'My Notes'), 'url' => ['/note/space/started', 'id' => $user->id]],
         //我收藏的笔记
-        ['label' => Yii::t('article', 'Collection of notes'), 'url' => ['/note/space/collected', 'id' => $user->id]]
+        ['label' => Yii::t('note', 'Collection of notes'), 'url' => ['/note/space/collected', 'id' => $user->id]]
     ]
 ]); ?>
