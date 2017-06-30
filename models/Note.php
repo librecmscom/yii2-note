@@ -8,6 +8,7 @@ namespace yuncms\note\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yuncms\user\models\Collection;
 
 /**
  * Class Note
@@ -108,6 +109,15 @@ class Note extends ActiveRecord
             return $this->hasOne(Yii::$app->user->identityClass, ['id' => 'user_id']);
         }
         return null;
+    }
+
+    /**
+     * Collection Relation
+     * @return \yii\db\ActiveQueryInterface
+     */
+    public function getCollections()
+    {
+        return $this->hasMany(Collection::className(), ['model_id' => 'id'])->onCondition(['model' => static::className()]);
     }
 
     /**

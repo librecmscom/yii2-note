@@ -14,7 +14,22 @@ $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
     <div class="col-xs-12 col-md-9 main">
         <h4 class="page-title">
             <i class="glyphicon glyphicon-tags"></i> <?= Html::encode($model->title); ?>
+
+            <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isCollected(get_class($model), $model->id)): ?>
+                <button data-target="collect-button" class="btn btn-default btn-sm"
+                        data-loading-text="<?= Yii::t('note', 'Loading...'); ?>"
+                        data-source_type="note"
+                        data-source_id="<?= $model->id ?>"> <?= Yii::t('note', 'Collected'); ?>
+                </button>
+            <?php else: ?>
+                <button data-target="collect-button" class="btn btn-default btn-sm"
+                        data-loading-text="<?= Yii::t('note', 'Loading...'); ?>"
+                        data-source_type="note"
+                        data-source_id="<?= $model->id ?>"> <?= Yii::t('note', 'Collect'); ?>
+                </button>
+            <?php endif; ?>
         </h4>
+
         <div class="fmt">
             <?=HighlightJs::widget([
                 'format' => $model->format,
