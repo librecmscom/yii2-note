@@ -15,7 +15,7 @@ use yii\helpers\Html;
                      alt="<?=$model->user->username?>"> <?=$model->user->username?>
             </a>
         </li>
-        <li><?=Yii::t('article', 'Published in');?> <?= Yii::$app->formatter->asRelativeTime($model->created_at); ?></li>
+        <li><?=Yii::t('note', 'Published in');?> <?= Yii::$app->formatter->asRelativeTime($model->created_at); ?></li>
 
     </ul>
 

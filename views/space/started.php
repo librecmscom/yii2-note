@@ -10,14 +10,12 @@ use yuncms\live\assets\LiveAsset;
 LiveAsset::register($this);
 $this->context->layout = '@yuncms/user/views/layouts/space';
 $this->params['user'] = $user;
+
 if (!Yii::$app->user->isGuest && Yii::$app->user->id == $user->id) {//Me
-    $who = Yii::t('user', 'My');
+    $this->title = Yii::t('note', 'My Notes');
 } else {
-    $who = Yii::t('user', 'His');
+    $this->title = Yii::t('note', 'His Notes');
 }
-$this->title = Yii::t('note', '{who} Notes', [
-    'who' => $who,
-]);
 ?>
 
 <div class="stream-following">
