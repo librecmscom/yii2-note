@@ -189,23 +189,24 @@ use yuncms\note\models\Note;
 <?= $form->field($model, 'content')->textarea() ?>
 
     <div class="form-group">
-        <?php if ($model->isNewRecord): ?>
-            <?= Html::submitButton(Yii::t('note', 'Save as public'), [
-                'class' => 'btn btn-success',
-                'name' => 'Note[type]',
-                'value' => Note::TYPE_PUBLIC
-            ]) ?>
+        <div class="col-sm-offset-3 col-sm-9">
+            <?php if ($model->isNewRecord): ?>
+                <?= Html::submitButton(Yii::t('note', 'Save as public'), [
+                    'class' => 'btn btn-success',
+                    'name' => 'Note[type]',
+                    'value' => Note::TYPE_PUBLIC
+                ]) ?>
 
-            <?= Html::submitButton(Yii::t('note', 'Save as private'), [
-                'class' => 'btn pub-btn',
-                'name' => 'Note[type]',
-                'value' => Note::TYPE_PRIVATE
-            ]) ?>
-        <?php else: ?>
-            <?=
-            Html::submitButton(Yii::t('note', 'Update'), ['class' => 'btn btn-primary'])
-            ?>
-        <?php endif; ?>
+                <?= Html::submitButton(Yii::t('note', 'Save as private'), [
+                    'class' => 'btn pub-btn',
+                    'name' => 'Note[type]',
+                    'value' => Note::TYPE_PRIVATE
+                ]) ?>
+            <?php else: ?>
+                <?=
+                Html::submitButton(Yii::t('note', 'Update'), ['class' => 'btn btn-primary'])
+                ?>
+            <?php endif; ?>
+        </div>
     </div>
-
 <?php ActiveForm::end(); ?>
