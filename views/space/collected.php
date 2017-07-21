@@ -8,7 +8,7 @@ use yuncms\live\assets\LiveAsset;
 /* @var yuncms\user\models\User $model */
 
 LiveAsset::register($this);
-$this->context->layout = '@yuncms/user/views/layouts/space';
+$this->context->layout = '@yuncms/user/frontend/views/layouts/space';
 $this->params['user'] = $user;
 
 if (!Yii::$app->user->isGuest && Yii::$app->user->id == $user->id) {//Me
