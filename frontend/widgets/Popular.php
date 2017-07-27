@@ -5,7 +5,7 @@
  * @license http://www.tintsoft.com/license/
  */
 
-namespace yuncms\note\widgets;
+namespace yuncms\note\frontend\widgets;
 
 use yii\base\Widget;
 use yuncms\note\models\Note;

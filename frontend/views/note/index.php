@@ -3,8 +3,8 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 use yuncms\note\models\Note;
-use yuncms\note\widgets\Popular;
-use yuncms\note\assets\NoteAsset;
+use yuncms\note\frontend\widgets\Popular;
+use yuncms\note\frontend\assets\NoteAsset;
 /*
  * @var yii\web\View $this
  */

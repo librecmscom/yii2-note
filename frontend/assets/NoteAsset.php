@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2012 TintSoft Technology Co. Ltd.
  * @license http://www.tintsoft.com/license/
  */
-namespace yuncms\note\assets;
+namespace yuncms\note\frontend\assets;
 
 use yii\web\AssetBundle;
 
@@ -13,7 +13,7 @@ use yii\web\AssetBundle;
  */
 class NoteAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/yuncms/yii2-note/views/assets';
+    public $sourcePath = '@yuncms/note/frontend/views/assets';
 
     /**
      * @var array
