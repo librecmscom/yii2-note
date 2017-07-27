@@ -4,6 +4,7 @@
  * @copyright Copyright (c) 2012 TintSoft Technology Co. Ltd.
  * @license http://www.tintsoft.com/license/
  */
+
 namespace yuncms\note\frontend;
 
 use Yii;
@@ -16,7 +17,7 @@ use yii\base\InvalidParamException;
  * ```php
  * 'modules' => [
  *     'note' => [
- *         'class'         => 'yuncms\note\Module',
+ *         'class'         => 'yuncms\note\frontend\Module',
  *     ],
  * ],
  * ```
