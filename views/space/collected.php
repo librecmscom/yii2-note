@@ -2,12 +2,10 @@
 
 use yii\bootstrap\Nav;
 use yii\widgets\ListView;
-use yuncms\live\assets\LiveAsset;
 
 /* @var yii\web\View $this */
 /* @var yuncms\user\models\User $model */
 
-LiveAsset::register($this);
 $this->context->layout = '@yuncms/user/frontend/views/layouts/space';
 $this->params['user'] = $user;
 
