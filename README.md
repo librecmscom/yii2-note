@@ -16,3 +16,8 @@
     'note/create' => 'note/manage/create',
     'note/manage' => 'note/manage/index',
     'note/<key:[\w+]+>' => 'note/note/view',
+    
+## License
+
+This is released under the MIT License. See the bundled [LICENSE.md](LICENSE.md)
+for details.
