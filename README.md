@@ -9,6 +9,23 @@
 [![Dependency Status](https://www.versioneye.com/php/yuncms:yii2-note/dev-master/badge.png)](https://www.versioneye.com/php/yuncms:yii2-note/dev-master)
 [![License](https://poser.pugx.org/yuncms/yii2-note/license.svg)](https://packagist.org/packages/yuncms/yii2-note)
 
+## Installation
+
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+
+Either run
+
+```bash
+$ composer require yuncms/yii2-note
+```
+
+or add
+
+```
+"yuncms/yii2-note": "~2.0.0"
+```
+
+to the `require` section of your `composer.json` file.
 
 笔记
 
