@@ -27,12 +27,17 @@ or add
 
 to the `require` section of your `composer.json` file.
 
-笔记
+笔记Url规则
 
+```php
+    'notes/<page:\d+>' => 'note/note/index',
+    'notes' => 'note/note/index',
+    'note/create' => 'note/note/create',
+    'note/print/<uuid:[\w+]+>' => 'note/note/print',
+    'note/download/<uuid:[\w+]+>' => 'note/note/download',
+    'note/<uuid:[\w+]+>' => 'note/note/view',
 
-    'note/create' => 'note/manage/create',
-    'note/manage' => 'note/manage/index',
-    'note/<key:[\w+]+>' => 'note/note/view',
+```
     
 ## License
 
