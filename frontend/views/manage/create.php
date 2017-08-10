@@ -13,10 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <div class="row">
-    <div class="col-md-2">
-        <?= $this->render('@yuncms/user/frontend/views/_profile_menu') ?>
-    </div>
-    <div class="col-md-10">
+    <div class="col-md-12">
+
         <h2 class="h3 profile-title"><?= Yii::t('note', 'Notes') ?>
             <div class="pull-right">
                 <a class="btn btn-primary" href="<?=Url::to(['index'])?>"><?=Yii::t('note', 'Notes')?></a>
