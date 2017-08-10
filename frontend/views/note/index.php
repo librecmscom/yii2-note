@@ -39,7 +39,7 @@ NoteAsset::register($this);
     <div class="col-xs-12 col-md-3 side">
         <div class="side-alert alert alert-warning mt-30">
             <p><?= Yii::t('note', 'Learned something new？ Write it down'); ?></p>
-            <a class="btn btn-primary btn-block mt-10" href="<?= Url::to(['/note/manage/create']) ?>"><i
+            <a class="btn btn-primary btn-block mt-10" href="<?= Url::to(['/note/note/create']) ?>"><i
                         class="fa fa-edit"></i> <?= Yii::t('note', 'Write a note'); ?></a>
         </div>
         <?= Popular::widget() ?>

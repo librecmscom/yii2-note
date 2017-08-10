@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+
 use yii\helpers\Url;
 use yii\helpers\Html;
 use xutl\highlightjs\HighlightJs;
@@ -31,7 +32,7 @@ $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
         </h4>
 
         <div class="fmt">
-            <?=HighlightJs::widget([
+            <?= HighlightJs::widget([
                 'format' => $model->format,
                 'content' => $model->content,
             ]); ?>
@@ -42,9 +43,27 @@ $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
                 <?php if ($model->isAuthor()) : ?>
                     <li><a href="<?= Url::to(['update', 'uuid' => $model->uuid]) ?>" class="edit"><i
                                     class="fa fa-edit"></i> <?= Yii::t('note', 'Edit'); ?></a></li>
-                    <li><a href="<?= Url::to(['delete', 'id' => $model->id]) ?>" class="edit" data-method="post"
+                    <li><a href="<?= Url::to(['delete', 'uuid' => $model->uuid]) ?>" class="edit" data-method="post"
                            data-confirm="<?= Yii::t('note', 'Sure?'); ?>"><i
                                     class="fa fa-remove"></i> <?= Yii::t('note', 'Remove'); ?></a></li>
+                    <?php if ($model->isPublic()): ?>
+                        <li>
+                            <a href="<?= Url::to(['set-type', 'uuid' => $model->uuid, 'type' => 1]) ?>"
+                               class="edit" data-method="post"
+                               data-confirm="<?= Yii::t('note', 'Are you sure you want to private this note?'); ?>"><i
+                                        class="fa fa-unlock"></i>
+                                <?= Yii::t('note', 'Public'); ?>
+
+                            </a></li>
+                    <?php else: ?>
+                        <li>
+                            <a href="<?= Url::to(['set-type', 'uuid' => $model->uuid, 'type' => 0]) ?>"
+                               class="edit" data-method="post"
+                               data-confirm="<?= Yii::t('note', 'Are you sure you want to public this note?'); ?>"><i
+                                        class="fa fa-lock"></i>
+                                <?= Yii::t('note', 'Private'); ?>
+                            </a></li>
+                    <?php endif; ?>
                 <?php endif; ?>
             </ul>
         </div>
