@@ -36,6 +36,18 @@ $this->title = Html::encode($model->title) . ' - ' . Yii::t('note', 'Notes');
                 'content' => $model->content,
             ]); ?>
         </div>
+
+        <div class="post-opt mt-10">
+            <ul class="list-inline">
+                <?php if ($model->isAuthor()) : ?>
+                    <li><a href="<?= Url::to(['update', 'uuid' => $model->uuid]) ?>" class="edit"><i
+                                    class="fa fa-edit"></i> <?= Yii::t('note', 'Edit'); ?></a></li>
+                    <li><a href="<?= Url::to(['delete', 'id' => $model->id]) ?>" class="edit" data-method="post"
+                           data-confirm="<?= Yii::t('note', 'Sure?'); ?>"><i
+                                    class="fa fa-remove"></i> <?= Yii::t('note', 'Remove'); ?></a></li>
+                <?php endif; ?>
+            </ul>
+        </div>
     </div>
 
 

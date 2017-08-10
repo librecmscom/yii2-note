@@ -40,9 +40,14 @@ class NoteController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'print', 'raw','download'],
+                        'actions' => ['index', 'view', 'print', 'raw','download',],
                         'roles' => ['?', '@'],
-                    ]
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create', 'set-type', 'update', 'delete'],
+                        'roles' => ['@'],
+                    ],
                 ],
             ],
         ];
@@ -59,6 +64,65 @@ class NoteController extends Controller
         ]);
         $query->applyOrder(Yii::$app->request->get('order', 'new'));
         return $this->render('index', ['dataProvider' => $dataProvider]);
+    }
+
+    /**
+     * 创建新的笔记
+     * @return string|\yii\web\Response
+     */
+    public function actionCreate()
+    {
+        $model = New Note();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('success', Yii::t('note', 'Note created.'));
+            return $this->redirect(['index']);
+        }
+        return $this->render('create', ['model' => $model]);
+    }
+
+    /**
+     * 修改页面
+     *
+     * @param integer $uuid
+     * @return \yii\web\Response|string
+     * @throws NotFoundHttpException
+     * @throws ForbiddenHttpException
+     */
+    public function actionUpdate($uuid)
+    {
+        /** @var Note $model */
+        $model = $this->findModel($uuid);
+        if ($model->isAuthor()) {
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                Yii::$app->getSession()->setFlash('success', Yii::t('note', 'Note updated.'));
+                return $this->redirect(['view','uuid'=>$model->uuid]);
+            }
+            return $this->render('update', ['model' => $model]);
+        }
+        throw new ForbiddenHttpException(Yii::t('yii', 'You are not allowed to perform this action.'));
+    }
+
+    /**
+     * 设置笔记隐藏或公开
+     * @param int $id
+     * @return \yii\web\Response
+     * @throws ForbiddenHttpException
+     */
+    public function actionSetType($uuid)
+    {
+        $model = $this->findModel($uuid);
+        if ($model->isAuthor()) {
+            if($model->isPublic()){
+                $model->setPrivate();
+                Yii::$app->getSession()->setFlash('success', Yii::t('note', 'Notes have been made private.'));
+                return $this->redirect(['index']);
+            } else {
+                $model->setPublic();
+                Yii::$app->getSession()->setFlash('success', Yii::t('note', 'Notes have been made public.'));
+                return $this->redirect(['index']);
+            }
+        }
+        throw new ForbiddenHttpException(Yii::t('yii', 'You are not allowed to perform this action.'));
     }
 
     /**
@@ -79,6 +143,26 @@ class NoteController extends Controller
             Yii::$app->session->setFlash('success', Yii::t('note', 'Note does not exist.'));
             return $this->redirect(['index',]);
         }
+    }
+
+    /**
+     * Deletes an existing Page model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
+     * @param int $uuid
+     *
+     * @return mixed
+     * @throws ForbiddenHttpException
+     */
+    public function actionDelete($uuid)
+    {
+        $model = $this->findModel($uuid);
+        if ($model->isAuthor()) {
+            $model->delete();
+            Yii::$app->getSession()->setFlash('success', Yii::t('note', 'Note has been deleted'));
+            return $this->redirect(['index']);
+        }
+        throw new ForbiddenHttpException(Yii::t('yii', 'You are not allowed to perform this action.'));
     }
 
     /**
