@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'options' => [
                                 'class' => 'btn btn-danger btn-sm',
                                 'data' => [
-                                    'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                                    'confirm' => Yii::t('note', 'Are you sure you want to delete this item?'),
                                     'method' => 'post',
                                 ],
                             ]
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= DetailView::widget([
                 'model' => $model,
                 'attributes' => [
-                                'id',
+                    'id',
                     'user_id',
                     'folder_id',
                     'uuid',
