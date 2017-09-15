@@ -17,7 +17,6 @@ class NoteQuery extends ActiveQuery
     /**
      * Apply possible notes order to query
      * @param string $order
-     * @return string
      */
     public function applyOrder($order)
     {

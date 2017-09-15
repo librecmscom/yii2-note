@@ -8,7 +8,7 @@ namespace yuncms\note\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use yuncms\user\models\Collection;
+use yuncms\collection\models\Collection;
 
 /**
  * Class Note
