@@ -12,7 +12,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yuncms\note\models\Note;
-use yuncms\user\models\Collection;
+use yuncms\collection\models\Collection;
 use yuncms\user\models\User;
 
 class SpaceController extends Controller
