@@ -13,7 +13,7 @@ use yii\helpers\Html;
         <li>
             <a href="<?= Url::to(['/user/space/view', 'id' => $model->user_id]) ?>" target="_blank">
                 <img class="avatar-20 mr-10 hidden-xs" src="<?= $model->user->getAvatar('small') ?>"
-                     alt="<?= $model->user->username ?>"> <?= $model->user->username ?>
+                     alt="<?= $model->user->nickname ?>"> <?= $model->user->nickname ?>
             </a>
         </li>
         <li><?= Yii::t('note', 'Published in'); ?> <?= Yii::$app->formatter->asRelativeTime($model->created_at); ?></li>
