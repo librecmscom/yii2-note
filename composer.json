@@ -25,6 +25,7 @@
       "name": "note",
       "i18n": {
         "class": "yii\\i18n\\PhpMessageSource",
+        "sourceLanguage": "en-US",
         "basePath": "@yuncms/note/message"
       },
       "migrationNamespace": "yuncms\\note\\migrations",
