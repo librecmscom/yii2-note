@@ -31,10 +31,10 @@ to the `require` section of your `composer.json` file.
 
 ```php
     'notes/<page:\d+>' => 'note/note/index',
+    'notes/create' => 'note/note/create',
     'notes' => 'note/note/index',
-    'note/create' => 'note/note/create',
-    'note/print/<uuid:[\w+]+>' => 'note/note/print',
-    'note/download/<uuid:[\w+]+>' => 'note/note/download',
+    'notes/<uuid:[\w+]+>/print' => 'note/note/print',
+    'notes/<uuid:[\w+]+>/download' => 'note/note/download',
     'note/<uuid:[\w+]+>' => 'note/note/view',
 
 ```

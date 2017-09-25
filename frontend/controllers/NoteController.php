@@ -122,7 +122,7 @@ class NoteController extends Controller
 
     /**
      * 设置笔记隐藏或公开
-     * @param int $id
+     * @param int $uuid
      * @return \yii\web\Response
      * @throws ForbiddenHttpException
      */
@@ -238,14 +238,14 @@ class NoteController extends Controller
      * Finds the Page model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
-     * @param string $key
+     * @param string $uuid
      *
      * @return Note the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($key)
+    protected function findModel($uuid)
     {
-        if (($model = Note::findOne(['uuid' => $key])) != null) {
+        if (($model = Note::findOne(['uuid' => $uuid])) != null) {
             return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist');
