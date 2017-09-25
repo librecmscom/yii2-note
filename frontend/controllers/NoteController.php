@@ -8,10 +8,10 @@
 namespace yuncms\note\frontend\controllers;
 
 use Yii;
-use yii\helpers\Url;
-use yii\helpers\Html;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use yii\caching\DbDependency;
+use yii\caching\TagDependency;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
@@ -29,6 +29,24 @@ class NoteController extends Controller
     public function behaviors()
     {
         return [
+            'pageCache' => [
+                'class' => 'yii\filters\PageCache',
+                'only' => ['index'],
+                'duration' => 24 * 3600 * 365, // 1 year
+                'variations' => [
+                    Yii::$app->user->id,
+                    Yii::$app->language,
+                    Yii::$app->request->get('order'),
+                    Yii::$app->request->get('page'),
+                ],
+                'dependency' => [
+                    'class' => 'yii\caching\ChainedDependency',
+                    'dependencies' => [
+                        new TagDependency(['tags' => [Yii::$app->controller->module->id]]),
+                        new DbDependency(['sql' => 'SELECT MAX(id) FROM ' . Note::tableName()])
+                    ]
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
