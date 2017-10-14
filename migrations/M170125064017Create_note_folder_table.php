@@ -16,7 +16,7 @@ class M170125064017Create_note_folder_table extends Migration
 
         $this->createTable('{{%note_folder}}', [
             'id' => $this->primaryKey(),
-            'user_id' => $this->integer(),
+            'user_id' => $this->integer()->unsigned(),
             'name' => $this->string()->defaultValue('Untitled')->comment('标题[可选]'),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),

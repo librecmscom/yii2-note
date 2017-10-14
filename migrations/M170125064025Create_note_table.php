@@ -16,7 +16,7 @@ class M170125064025Create_note_table extends Migration
 
         $this->createTable('{{%note}}', [
             'id' => $this->primaryKey(),
-            'user_id' => $this->integer(),
+            'user_id' => $this->integer()->unsigned(),
             'folder_id' => $this->integer(),
             'uuid' => $this->string(),
             'type' => $this->smallInteger(1)->defaultValue(0)->comment('0私有1公共'),
