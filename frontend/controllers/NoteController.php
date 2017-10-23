@@ -8,15 +8,13 @@
 namespace yuncms\note\frontend\controllers;
 
 use Yii;
+use yii\web\Response;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use yii\caching\DbDependency;
-use yii\caching\TagDependency;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\web\ForbiddenHttpException;
-use yii\web\Response;
 use yuncms\note\models\Note;
 
 /**
@@ -29,24 +27,6 @@ class NoteController extends Controller
     public function behaviors()
     {
         return [
-            'pageCache' => [
-                'class' => 'yii\filters\PageCache',
-                'only' => ['index'],
-                'duration' => 24 * 3600 * 365, // 1 year
-                'variations' => [
-                    Yii::$app->user->id,
-                    Yii::$app->language,
-                    Yii::$app->request->get('order'),
-                    Yii::$app->request->get('page'),
-                ],
-                'dependency' => [
-                    'class' => 'yii\caching\ChainedDependency',
-                    'dependencies' => [
-                        new TagDependency(['tags' => [Yii::$app->controller->module->id]]),
-                        new DbDependency(['sql' => 'SELECT MAX(id) FROM ' . Note::tableName()])
-                    ]
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -101,19 +81,19 @@ class NoteController extends Controller
     /**
      * 修改页面
      *
-     * @param integer $uuid
+     * @param integer $id
      * @return \yii\web\Response|string
      * @throws NotFoundHttpException
      * @throws ForbiddenHttpException
      */
-    public function actionUpdate($uuid)
+    public function actionUpdate($id)
     {
         /** @var Note $model */
-        $model = $this->findModel($uuid);
+        $model = $this->findModel($id);
         if ($model->isAuthor()) {
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 Yii::$app->getSession()->setFlash('success', Yii::t('note', 'Note updated.'));
-                return $this->redirect(['view','uuid'=>$model->uuid]);
+                return $this->redirect(['view','id'=>$model->id]);
             }
             return $this->render('update', ['model' => $model]);
         }
@@ -122,13 +102,13 @@ class NoteController extends Controller
 
     /**
      * 设置笔记隐藏或公开
-     * @param int $uuid
+     * @param int $id
      * @return \yii\web\Response
      * @throws ForbiddenHttpException
      */
-    public function actionSetType($uuid)
+    public function actionSetType($id)
     {
-        $model = $this->findModel($uuid);
+        $model = $this->findModel($id);
         if ($model->isAuthor()) {
             if($model->isPublic()){
                 $model->setPrivate();
@@ -146,13 +126,13 @@ class NoteController extends Controller
     /**
      * 查看笔记页面
      *
-     * @param string $uuid
+     * @param string $id
      *
      * @return string
      */
-    public function actionView($uuid)
+    public function actionView($id)
     {
-        $model = $this->findModel($uuid);
+        $model = $this->findModel($id);
         if ($model && ($model->isPublic() || $model->isAuthor())) {
             return $this->render('view', [
                 'model' => $model,
@@ -167,14 +147,14 @@ class NoteController extends Controller
      * Deletes an existing Page model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      *
-     * @param int $uuid
+     * @param int $id
      *
      * @return mixed
      * @throws ForbiddenHttpException
      */
-    public function actionDelete($uuid)
+    public function actionDelete($id)
     {
-        $model = $this->findModel($uuid);
+        $model = $this->findModel($id);
         if ($model->isAuthor()) {
             $model->delete();
             Yii::$app->getSession()->setFlash('success', Yii::t('note', 'Note has been deleted'));
@@ -185,12 +165,12 @@ class NoteController extends Controller
 
     /**
      * 获取打印
-     * @param string $uuid
+     * @param string $id
      * @return string|Response
      */
-    public function actionPrint($uuid)
+    public function actionPrint($id)
     {
-        $model = $this->findModel($uuid);
+        $model = $this->findModel($id);
         if ($model && ($model->isPublic() || $model->isAuthor())) {
             return $this->render('print', [
                 'model' => $model,
@@ -203,12 +183,12 @@ class NoteController extends Controller
 
     /**
      * 获取原始笔记
-     * @param string $uuid
+     * @param string $id
      * @return string|Response
      */
-    public function actionRaw($uuid)
+    public function actionRaw($id)
     {
-        $model = $this->findModel($uuid);
+        $model = $this->findModel($id);
         if ($model && ($model->isPublic() || $model->isAuthor())) {
             Yii::$app->response->format = Response::FORMAT_RAW;
             return $model->content;
@@ -220,12 +200,12 @@ class NoteController extends Controller
 
     /**
      * 下载原始笔记
-     * @param string $uuid
+     * @param string $id
      * @return string|Response
      */
-    public function actionDownload($uuid)
+    public function actionDownload($id)
     {
-        $model = $this->findModel($uuid);
+        $model = $this->findModel($id);
         if ($model && ($model->isPublic() || $model->isAuthor())) {
             return Yii::$app->response->sendContentAsFile($model->content, $model->title);
         } else {
@@ -238,14 +218,14 @@ class NoteController extends Controller
      * Finds the Page model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      *
-     * @param string $uuid
+     * @param string $id
      *
      * @return Note the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($uuid)
+    protected function findModel($id)
     {
-        if (($model = Note::findOne(['uuid' => $uuid])) != null) {
+        if (($model = Note::findOne($id)) != null) {
             return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist');

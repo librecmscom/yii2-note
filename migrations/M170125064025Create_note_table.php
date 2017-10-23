@@ -15,7 +15,7 @@ class M170125064025Create_note_table extends Migration
         }
 
         $this->createTable('{{%note}}', [
-            'id' => $this->primaryKey(),
+            'id' => $this->bigPrimaryKey(18)->unsigned(),
             'user_id' => $this->integer()->unsigned(),
             'folder_id' => $this->integer(),
             'uuid' => $this->string(),

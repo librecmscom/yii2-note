@@ -54,7 +54,11 @@ class Note extends ActiveRecord
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => 'user_id',
                 ],
-            ]
+            ],
+            'snowflake'=>[
+                'class' => 'xutl\snowflake\SnowflakeBehavior',
+                'attribute' => 'id',
+            ],
         ];
     }
 

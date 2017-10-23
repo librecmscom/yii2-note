@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = [
     'label' => Yii::t('note', 'Notes'),
     'url' => ['index']
 ];
-$this->params['breadcrumbs'][] = ['label' => Html::encode($model->title), 'url' => ['view', 'uuid' => $model->uuid]];
+$this->params['breadcrumbs'][] = ['label' => Html::encode($model->title), 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('note', 'Update');
 ?>
 <div class="row">

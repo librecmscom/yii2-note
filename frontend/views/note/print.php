@@ -16,7 +16,7 @@ $this->context->layout = false;
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title><?= Html::encode($model->title); ?> - Printed Paste
-        ID: <?= Url::to(['/note/note/view', 'uuid' => $model->uuid], true) ?></title>
+        ID: <?= Url::to(['/note/note/view', 'id' => $model->id], true) ?></title>
     <meta name="robots" content="noindex"/>
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
